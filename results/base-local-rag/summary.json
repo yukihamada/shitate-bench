@@ -1,0 +1,61 @@
+{
+  "model": "mlx-community/Qwen3-8B-4bit",
+  "adapter": "",
+  "rag": true,
+  "tag": "base-local-rag",
+  "n": 90,
+  "accuracy": 0.5667,
+  "wall_s": 1756.8,
+  "by_industry": {
+    "tax": {
+      "n": 30,
+      "accuracy": 0.5
+    },
+    "labor": {
+      "n": 30,
+      "accuracy": 0.4
+    },
+    "finance": {
+      "n": 30,
+      "accuracy": 0.8
+    }
+  },
+  "by_kind": {
+    "tax_consumption": {
+      "n": 10,
+      "accuracy": 0.6
+    },
+    "tax_income": {
+      "n": 10,
+      "accuracy": 0.2
+    },
+    "tax_corporate": {
+      "n": 10,
+      "accuracy": 0.7
+    },
+    "labor_overtime": {
+      "n": 10,
+      "accuracy": 0.3
+    },
+    "labor_leave": {
+      "n": 10,
+      "accuracy": 0.0
+    },
+    "labor_avgwage": {
+      "n": 10,
+      "accuracy": 0.9
+    },
+    "finance_ratecap": {
+      "n": 10,
+      "accuracy": 1.0
+    },
+    "finance_excess": {
+      "n": 10,
+      "accuracy": 1.0
+    },
+    "finance_penalty": {
+      "n": 10,
+      "accuracy": 0.4
+    }
+  }
+}

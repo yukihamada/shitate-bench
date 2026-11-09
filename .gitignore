@@ -1,0 +1,11 @@
+# 大きな生成物・再生成可能なものは追跡しない
+corpus/raw/
+data/distill/adapter/
+data/distill/*.jsonl
+data/distill*.log
+data/train*.log
+results/*/local.jsonl
+results/*.log
+__pycache__/
+*.pyc
+.DS_Store

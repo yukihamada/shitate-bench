@@ -1,0 +1,33 @@
+{
+  "model": "mlx-community/Qwen3-8B-4bit",
+  "adapter": "data/distill/adapter",
+  "rag": false,
+  "tag": "smoke",
+  "n": 3,
+  "accuracy": 0.6667,
+  "wall_s": 7.7,
+  "by_industry": {
+    "labor": {
+      "n": 2,
+      "accuracy": 0.5
+    },
+    "tax": {
+      "n": 1,
+      "accuracy": 1.0
+    }
+  },
+  "by_kind": {
+    "labor_leave": {
+      "n": 1,
+      "accuracy": 0.0
+    },
+    "labor_avgwage": {
+      "n": 1,
+      "accuracy": 1.0
+    },
+    "tax_consumption": {
+      "n": 1,
+      "accuracy": 1.0
+    }
+  }
+}
