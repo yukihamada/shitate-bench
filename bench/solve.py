@@ -13,19 +13,31 @@ def _i(x) -> int:
     return int(round(float(x)))
 
 
+def _need(name: str, x):
+    if x is None or x == "":
+        raise ValueError(f"{name}を入力してください")
+    try:
+        n = float(x)
+    except (TypeError, ValueError):
+        raise ValueError(f"{name}を入力してください")
+    if n < 0:
+        raise ValueError(f"{name}は0以上で入力してください")
+    return n
+
+
 def solve_tax_consumption(s: dict) -> float:
-    price = _i(s["price"])
-    rate = _i(s["rate"])
+    price = _i(_need("価格", s["price"]))
+    rate = _i(_need("税率", s["rate"]))
     return int(price * rate / 100)
 
 
 def solve_tax_income(s: dict) -> float:
-    tax, _, _ = income_tax(_i(s["taxable"]))
+    tax, _, _ = income_tax(_i(_need("課税所得", s["taxable"])))
     return tax
 
 
 def solve_tax_corporate(s: dict) -> float:
-    income = _i(s["income"])
+    income = _i(_need("所得", s["income"]))
     small = min(income, 8_000_000)
     large = max(income - 8_000_000, 0)
     tax = int(small * 0.15 + large * 0.232)
@@ -33,9 +45,9 @@ def solve_tax_corporate(s: dict) -> float:
 
 
 def solve_labor_overtime(s: dict) -> float:
-    hourly = _i(s["hourly"])
-    hours = _i(s["hours"])
-    night = min(_i(s.get("night", 0)), hours)
+    hourly = _i(_need("時給", s["hourly"]))
+    hours = _i(_need("時間", s["hours"]))
+    night = min(_i(_need("深夜時間", s.get("night", 0))), hours)
     normal = min(hours, 60)
     over60 = max(hours - 60, 0)
     pay = normal * hourly * 1.25 + over60 * hourly * 1.50 + night * hourly * 0.25
@@ -43,29 +55,31 @@ def solve_labor_overtime(s: dict) -> float:
 
 
 def solve_labor_leave(s: dict) -> float:
-    return leave_days(float(s["years"]))
+    return leave_days(_need("勤続年数", s["years"]))
 
 
 def solve_labor_avgwage(s: dict) -> float:
-    total = _i(s["total"])
-    days = _i(s["days"])
+    total = _i(_need("賃金総額", s["total"]))
+    days = _i(_need("日数", s["days"]))
+    if days <= 0:
+        raise ValueError("日数を入力してください")
     return round(total / days, 2)
 
 
 def solve_finance_ratecap(s: dict) -> float:
-    return rate_cap(_i(s["principal"]))
+    return rate_cap(_i(_need("元本", s["principal"])))
 
 
 def solve_finance_excess(s: dict) -> float:
-    principal = _i(s["principal"])
-    charged = float(s["charged"])
-    year = _i(s["year"])
+    principal = _i(_need("元本", s["principal"]))
+    charged = _need("約定金利", s["charged"])
+    year = _i(_need("年数", s["year"]))
     cap = rate_cap(principal)
     return int(round(principal * (charged - cap) / 100 * year))
 
 
 def solve_finance_penalty(s: dict) -> float:
-    principal = _i(s["principal"])
+    principal = _i(_need("元本", s["principal"]))
     cap = rate_cap(principal)
     return int(round(principal * (cap * 1.46) / 100))
 
