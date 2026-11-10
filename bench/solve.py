@@ -28,7 +28,8 @@ def solve_tax_corporate(s: dict) -> float:
     income = _i(s["income"])
     small = min(income, 8_000_000)
     large = max(income - 8_000_000, 0)
-    return int(small * 0.19 + large * 0.232)
+    tax = int(small * 0.15 + large * 0.232)
+    return (tax // 100) * 100  # 100円未満切捨て（国税通則法119条）
 
 
 def solve_labor_overtime(s: dict) -> float:

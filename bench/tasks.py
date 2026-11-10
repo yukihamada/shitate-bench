@@ -6,6 +6,7 @@
 """
 from __future__ import annotations
 
+import math
 import random
 from typing import Callable
 
@@ -66,6 +67,7 @@ def income_tax(taxable: int) -> tuple[int, float, int]:
     for limit, rate, deduct in INCOME_BRACKETS:
         if taxable <= limit:
             tax = int(taxable * rate - deduct)
+            tax = (tax // 100) * 100  # 年税額は100円未満切捨て（国税通則法119条）
             return tax, rate, deduct
     raise ValueError("unreachable")
 
@@ -96,21 +98,23 @@ def tax_income(rng: random.Random) -> dict:
 
 
 # 法人税法66条: 普通法人 23.2%。中小法人（資本金1億円以下）は年800万円以下の
-# 所得部分に 19% の軽減税率（66条2項）。本ベンチは中小法人の軽減適用を問う。
+# 所得部分に 15% の軽減税率（66条2項・租税特別措置法42の3の2。19%は適用除外事業者）。
+# 根拠: 国税庁 No.5759 令和8年4月1日現在。本ベンチは中小法人の軽減適用を問う。
 def tax_corporate(rng: random.Random) -> dict:
     income = rng.choice([2_000_000, 3_000_000, 5_000_000, 7_000_000, 8_000_000,
                          9_000_000, 10_000_000, 12_000_000, 15_000_000, 20_000_000,
                          25_000_000, 40_000_000])
     small_band = min(income, 8_000_000)
     large_band = max(income - 8_000_000, 0)
-    tax = int(small_band * 0.19 + large_band * 0.232)
+    tax = int(small_band * 0.15 + large_band * 0.232)
+    tax = (tax // 100) * 100  # 100円未満切捨て（国税通則法119条）
     return {
         "industry": "tax",
         "kind": "tax_corporate",
         "prompt": (
             f"資本金1億円以下の中小法人の各事業年度の所得が {income:,} 円のとき、"
-            f"法人税法66条により法人税額を計算してください（年800万円以下の部分は19%、"
-            f"超過部分は23.2%）。"
+            f"法人税額を計算してください。年800万円以下の部分は租税特別措置法42条の3の2"
+            f"による軽減税率15%、超過部分は法人税法66条1項の23.2%です。"
         ),
         "answer": tax,
         "answer_norm": f"num:{tax}",
@@ -119,8 +123,8 @@ def tax_corporate(rng: random.Random) -> dict:
         "audit": {
             "law": "法人税法",
             "article": "66",
-            "note": "法人税法66条1項（23.2%）と2項（中小軽減19%、800万円境界）",
-            "calc": f"{small_band:,}×19% + {large_band:,}×23.2% = {tax:,}",
+            "note": "法人税法66条1項（23.2%）と2項＋措置法42の3の2（中小軽減15%、800万円境界）",
+            "calc": f"{small_band:,}×15% + {large_band:,}×23.2% = {tax:,}",
         },
     }
 
@@ -170,7 +174,7 @@ def labor_overtime(rng: random.Random) -> dict:
 def leave_days(years: float) -> int:
     if years < 0.5:
         return 0
-    since = round(years - 0.5, 1)  # 6か月経過日からの年数
+    since = math.floor(round(years - 0.5, 6) + 1e-9)  # 6か月経過後の満年数（切り捨て）
     table = {0: 10, 1: 11, 2: 12, 3: 14, 4: 16, 5: 18}
     if since >= 6:
         return 20

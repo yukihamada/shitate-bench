@@ -4,8 +4,8 @@
   "n": 90,
   "accuracy": 1.0,
   "errors": 0,
-  "latency_median_s": 1.796,
-  "cost_total_usd": 0.161753,
+  "latency_median_s": 2.029,
+  "cost_total_usd": 0.161576,
   "by_industry": {
    "finance": {
     "n": 30,
@@ -58,7 +58,7 @@
     "accuracy": 1.0
    }
   },
-  "wall_s": 35.4,
+  "wall_s": 35.5,
   "rag": true,
   "mode": "tool"
  },
@@ -67,8 +67,8 @@
   "n": 90,
   "accuracy": 1.0,
   "errors": 0,
-  "latency_median_s": 1.156,
-  "cost_total_usd": 0.027994,
+  "latency_median_s": 1.331,
+  "cost_total_usd": 0.028154,
   "by_industry": {
    "finance": {
     "n": 30,
@@ -121,7 +121,7 @@
     "accuracy": 1.0
    }
   },
-  "wall_s": 26.3,
+  "wall_s": 30.0,
   "rag": true,
   "mode": "tool"
  },
@@ -130,8 +130,8 @@
   "n": 90,
   "accuracy": 1.0,
   "errors": 0,
-  "latency_median_s": 1.224,
-  "cost_total_usd": 0.097703,
+  "latency_median_s": 1.458,
+  "cost_total_usd": 0.097322,
   "by_industry": {
    "finance": {
     "n": 30,
@@ -184,7 +184,7 @@
     "accuracy": 1.0
    }
   },
-  "wall_s": 24.6,
+  "wall_s": 28.1,
   "rag": true,
   "mode": "tool"
  },
@@ -193,8 +193,8 @@
   "n": 90,
   "accuracy": 1.0,
   "errors": 0,
-  "latency_median_s": 1.864,
-  "cost_total_usd": 0.051558,
+  "latency_median_s": 1.383,
+  "cost_total_usd": 0.051621,
   "by_industry": {
    "finance": {
     "n": 30,
@@ -247,7 +247,7 @@
     "accuracy": 1.0
    }
   },
-  "wall_s": 92.3,
+  "wall_s": 27.0,
   "rag": true,
   "mode": "tool"
  },
@@ -256,8 +256,8 @@
   "n": 90,
   "accuracy": 1.0,
   "errors": 0,
-  "latency_median_s": 1.421,
-  "cost_total_usd": 0.024293,
+  "latency_median_s": 1.593,
+  "cost_total_usd": 0.024201,
   "by_industry": {
    "finance": {
     "n": 30,
@@ -310,7 +310,7 @@
     "accuracy": 1.0
    }
   },
-  "wall_s": 93.7,
+  "wall_s": 33.1,
   "rag": true,
   "mode": "tool"
  }

@@ -4,12 +4,12 @@
   "rag": true,
   "tag": "shitate-rag",
   "n": 90,
-  "accuracy": 0.5222,
-  "wall_s": 549.3,
+  "accuracy": 0.4778,
+  "wall_s": 546.9,
   "by_industry": {
     "tax": {
       "n": 30,
-      "accuracy": 0.533
+      "accuracy": 0.4
     },
     "labor": {
       "n": 30,
@@ -31,7 +31,7 @@
     },
     "tax_corporate": {
       "n": 10,
-      "accuracy": 0.9
+      "accuracy": 0.5
     },
     "labor_overtime": {
       "n": 10,

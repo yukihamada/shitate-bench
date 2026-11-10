@@ -1,24 +1,24 @@
 [
  {
-  "model": "gpt-4.1-nano",
+  "model": "claude-haiku-5-5",
   "n": 90,
-  "accuracy": 0.6889,
-  "accuracy_answered": 0.6889,
+  "accuracy": 0.9778,
+  "accuracy_answered": 0.9778,
   "errors": 0,
-  "latency_median_s": 2.602,
-  "cost_total_usd": 0.035894,
+  "latency_median_s": 7.599,
+  "cost_total_usd": 0.082293,
   "by_industry": {
    "finance": {
     "n": 30,
-    "accuracy": 0.867
+    "accuracy": 1.0
    },
    "labor": {
     "n": 30,
-    "accuracy": 0.633
+    "accuracy": 0.933
    },
    "tax": {
     "n": 30,
-    "accuracy": 0.567
+    "accuracy": 1.0
    }
   },
   "by_kind": {
@@ -28,11 +28,263 @@
    },
    "finance_penalty": {
     "n": 10,
-    "accuracy": 0.6
+    "accuracy": 1.0
    },
    "finance_ratecap": {
     "n": 10,
     "accuracy": 1.0
+   },
+   "labor_avgwage": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_leave": {
+    "n": 10,
+    "accuracy": 0.8
+   },
+   "labor_overtime": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_consumption": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_corporate": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_income": {
+    "n": 10,
+    "accuracy": 1.0
+   }
+  },
+  "wall_s": 150.5,
+  "rag": true
+ },
+ {
+  "model": "deepseek-chat",
+  "n": 90,
+  "accuracy": 0.7778,
+  "accuracy_answered": 0.7778,
+  "errors": 0,
+  "latency_median_s": 7.209,
+  "cost_total_usd": 0.072932,
+  "by_industry": {
+   "finance": {
+    "n": 30,
+    "accuracy": 0.9
+   },
+   "labor": {
+    "n": 30,
+    "accuracy": 0.667
+   },
+   "tax": {
+    "n": 30,
+    "accuracy": 0.767
+   }
+  },
+  "by_kind": {
+   "finance_excess": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "finance_penalty": {
+    "n": 10,
+    "accuracy": 0.7
+   },
+   "finance_ratecap": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_avgwage": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_leave": {
+    "n": 10,
+    "accuracy": 0.2
+   },
+   "labor_overtime": {
+    "n": 10,
+    "accuracy": 0.8
+   },
+   "tax_consumption": {
+    "n": 10,
+    "accuracy": 0.7
+   },
+   "tax_corporate": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_income": {
+    "n": 10,
+    "accuracy": 0.6
+   }
+  },
+  "wall_s": 173.7,
+  "rag": true
+ },
+ {
+  "model": "google/gemini-3.5-flash",
+  "n": 90,
+  "accuracy": 1.0,
+  "accuracy_answered": 1.0,
+  "errors": 0,
+  "latency_median_s": 5.001,
+  "cost_total_usd": 0.465958,
+  "by_industry": {
+   "finance": {
+    "n": 30,
+    "accuracy": 1.0
+   },
+   "labor": {
+    "n": 30,
+    "accuracy": 1.0
+   },
+   "tax": {
+    "n": 30,
+    "accuracy": 1.0
+   }
+  },
+  "by_kind": {
+   "finance_excess": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "finance_penalty": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "finance_ratecap": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_avgwage": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_leave": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_overtime": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_consumption": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_corporate": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_income": {
+    "n": 10,
+    "accuracy": 1.0
+   }
+  },
+  "wall_s": 95.5,
+  "rag": true
+ },
+ {
+  "model": "gpt-4.1-mini",
+  "n": 90,
+  "accuracy": 0.9444,
+  "accuracy_answered": 0.9444,
+  "errors": 0,
+  "latency_median_s": 4.125,
+  "cost_total_usd": 0.157872,
+  "by_industry": {
+   "finance": {
+    "n": 30,
+    "accuracy": 0.967
+   },
+   "labor": {
+    "n": 30,
+    "accuracy": 1.0
+   },
+   "tax": {
+    "n": 30,
+    "accuracy": 0.867
+   }
+  },
+  "by_kind": {
+   "finance_excess": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "finance_penalty": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "finance_ratecap": {
+    "n": 10,
+    "accuracy": 0.9
+   },
+   "labor_avgwage": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_leave": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "labor_overtime": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_consumption": {
+    "n": 10,
+    "accuracy": 0.6
+   },
+   "tax_corporate": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "tax_income": {
+    "n": 10,
+    "accuracy": 1.0
+   }
+  },
+  "wall_s": 73.8,
+  "rag": true
+ },
+ {
+  "model": "gpt-4.1-nano",
+  "n": 90,
+  "accuracy": 0.6333,
+  "accuracy_answered": 0.6333,
+  "errors": 0,
+  "latency_median_s": 2.712,
+  "cost_total_usd": 0.036342,
+  "by_industry": {
+   "finance": {
+    "n": 30,
+    "accuracy": 0.733
+   },
+   "labor": {
+    "n": 30,
+    "accuracy": 0.567
+   },
+   "tax": {
+    "n": 30,
+    "accuracy": 0.6
+   }
+  },
+  "by_kind": {
+   "finance_excess": {
+    "n": 10,
+    "accuracy": 1.0
+   },
+   "finance_penalty": {
+    "n": 10,
+    "accuracy": 0.4
+   },
+   "finance_ratecap": {
+    "n": 10,
+    "accuracy": 0.8
    },
    "labor_avgwage": {
     "n": 10,
@@ -44,70 +296,7 @@
    },
    "labor_overtime": {
     "n": 10,
-    "accuracy": 0.6
-   },
-   "tax_consumption": {
-    "n": 10,
-    "accuracy": 0.2
-   },
-   "tax_corporate": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_income": {
-    "n": 10,
-    "accuracy": 0.5
-   }
-  },
-  "wall_s": 47.5,
-  "rag": true
- },
- {
-  "model": "gpt-4.1-mini",
-  "n": 90,
-  "accuracy": 0.9222,
-  "accuracy_answered": 0.9222,
-  "errors": 0,
-  "latency_median_s": 4.658,
-  "cost_total_usd": 0.155536,
-  "by_industry": {
-   "finance": {
-    "n": 30,
-    "accuracy": 0.967
-   },
-   "labor": {
-    "n": 30,
-    "accuracy": 1.0
-   },
-   "tax": {
-    "n": 30,
-    "accuracy": 0.8
-   }
-  },
-  "by_kind": {
-   "finance_excess": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "finance_penalty": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "finance_ratecap": {
-    "n": 10,
-    "accuracy": 0.9
-   },
-   "labor_avgwage": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_leave": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_overtime": {
-    "n": 10,
-    "accuracy": 1.0
+    "accuracy": 0.4
    },
    "tax_consumption": {
     "n": 10,
@@ -119,199 +308,10 @@
    },
    "tax_income": {
     "n": 10,
-    "accuracy": 0.9
+    "accuracy": 0.3
    }
   },
-  "wall_s": 72.5,
-  "rag": true
- },
- {
-  "model": "claude-haiku-5-5",
-  "n": 90,
-  "accuracy": 0.9889,
-  "accuracy_answered": 0.9889,
-  "errors": 0,
-  "latency_median_s": 6.479,
-  "cost_total_usd": 0.07727,
-  "by_industry": {
-   "finance": {
-    "n": 30,
-    "accuracy": 1.0
-   },
-   "labor": {
-    "n": 30,
-    "accuracy": 0.967
-   },
-   "tax": {
-    "n": 30,
-    "accuracy": 1.0
-   }
-  },
-  "by_kind": {
-   "finance_excess": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "finance_penalty": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "finance_ratecap": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_avgwage": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_leave": {
-    "n": 10,
-    "accuracy": 0.9
-   },
-   "labor_overtime": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_consumption": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_corporate": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_income": {
-    "n": 10,
-    "accuracy": 1.0
-   }
-  },
-  "wall_s": 104.9,
-  "rag": true
- },
- {
-  "model": "google/gemini-3.5-flash",
-  "n": 90,
-  "accuracy": 1.0,
-  "accuracy_answered": 1.0,
-  "errors": 0,
-  "latency_median_s": 4.939,
-  "cost_total_usd": 0.462373,
-  "by_industry": {
-   "finance": {
-    "n": 30,
-    "accuracy": 1.0
-   },
-   "labor": {
-    "n": 30,
-    "accuracy": 1.0
-   },
-   "tax": {
-    "n": 30,
-    "accuracy": 1.0
-   }
-  },
-  "by_kind": {
-   "finance_excess": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "finance_penalty": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "finance_ratecap": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_avgwage": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_leave": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_overtime": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_consumption": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_corporate": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_income": {
-    "n": 10,
-    "accuracy": 1.0
-   }
-  },
-  "wall_s": 80.9,
-  "rag": true
- },
- {
-  "model": "deepseek-chat",
-  "n": 90,
-  "accuracy": 0.7667,
-  "accuracy_answered": 0.7667,
-  "errors": 0,
-  "latency_median_s": 7.678,
-  "cost_total_usd": 0.07286,
-  "by_industry": {
-   "finance": {
-    "n": 30,
-    "accuracy": 0.9
-   },
-   "labor": {
-    "n": 30,
-    "accuracy": 0.633
-   },
-   "tax": {
-    "n": 30,
-    "accuracy": 0.767
-   }
-  },
-  "by_kind": {
-   "finance_excess": {
-    "n": 10,
-    "accuracy": 0.9
-   },
-   "finance_penalty": {
-    "n": 10,
-    "accuracy": 0.9
-   },
-   "finance_ratecap": {
-    "n": 10,
-    "accuracy": 0.9
-   },
-   "labor_avgwage": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "labor_leave": {
-    "n": 10,
-    "accuracy": 0.1
-   },
-   "labor_overtime": {
-    "n": 10,
-    "accuracy": 0.8
-   },
-   "tax_consumption": {
-    "n": 10,
-    "accuracy": 0.6
-   },
-   "tax_corporate": {
-    "n": 10,
-    "accuracy": 1.0
-   },
-   "tax_income": {
-    "n": 10,
-    "accuracy": 0.7
-   }
-  },
-  "wall_s": 139.3,
+  "wall_s": 70.7,
   "rag": true
  }
 ]

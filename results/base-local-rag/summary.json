@@ -4,12 +4,12 @@
   "rag": true,
   "tag": "base-local-rag",
   "n": 90,
-  "accuracy": 0.5667,
-  "wall_s": 1756.8,
+  "accuracy": 0.5778,
+  "wall_s": 793.3,
   "by_industry": {
     "tax": {
       "n": 30,
-      "accuracy": 0.5
+      "accuracy": 0.533
     },
     "labor": {
       "n": 30,
@@ -31,7 +31,7 @@
     },
     "tax_corporate": {
       "n": 10,
-      "accuracy": 0.7
+      "accuracy": 0.8
     },
     "labor_overtime": {
       "n": 10,
