@@ -37,6 +37,7 @@ def tax_consumption(rng: random.Random) -> dict:
         "answer": tax,
         "answer_norm": f"num:{tax}",
         "tol": 0.5,
+        "slots": {"price": price, "rate": rate},
         "audit": {
             "law": "消費税法",
             "article": "29",
@@ -84,6 +85,7 @@ def tax_income(rng: random.Random) -> dict:
         "answer": tax,
         "answer_norm": f"num:{tax}",
         "tol": 1.0,
+        "slots": {"taxable": taxable},
         "audit": {
             "law": "所得税法",
             "article": "89",
@@ -113,6 +115,7 @@ def tax_corporate(rng: random.Random) -> dict:
         "answer": tax,
         "answer_norm": f"num:{tax}",
         "tol": 1.0,
+        "slots": {"income": income},
         "audit": {
             "law": "法人税法",
             "article": "66",
@@ -151,6 +154,7 @@ def labor_overtime(rng: random.Random) -> dict:
         "answer": pay,
         "answer_norm": f"num:{pay}",
         "tol": 1.0,
+        "slots": {"hourly": hourly, "hours": hours, "night": night},
         "audit": {
             "law": "労働基準法",
             "article": "37",
@@ -186,6 +190,7 @@ def labor_leave(rng: random.Random) -> dict:
         ),
         "answer": days,
         "answer_norm": f"num:{days}",
+        "slots": {"years": years},
         "audit": {
             "law": "労働基準法",
             "article": "39",
@@ -214,6 +219,7 @@ def labor_avgwage(rng: random.Random) -> dict:
         "answer": avg_r,
         "answer_norm": f"num:{avg_r:g}",
         "tol": 1.0,
+        "slots": {"total": total, "days": days},
         "audit": {
             "law": "労働基準法",
             "article": "12",
@@ -251,6 +257,7 @@ def finance_ratecap(rng: random.Random) -> dict:
         "answer": cap,
         "answer_norm": f"num:{cap}",
         "tol": 0.05,
+        "slots": {"principal": principal},
         "audit": {
             "law": "利息制限法",
             "article": "1",
@@ -280,6 +287,7 @@ def finance_excess(rng: random.Random) -> dict:
         "answer": excess,
         "answer_norm": f"num:{excess}",
         "tol": 1.0,
+        "slots": {"principal": principal, "charged": charged, "year": year},
         "audit": {
             "law": "利息制限法",
             "article": "1",
@@ -307,6 +315,7 @@ def finance_penalty(rng: random.Random) -> dict:
         "answer": penalty,
         "answer_norm": f"num:{penalty}",
         "tol": 1.0,
+        "slots": {"principal": principal},
         "audit": {
             "law": "利息制限法",
             "article": "4",

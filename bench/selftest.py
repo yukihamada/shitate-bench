@@ -11,6 +11,7 @@ import sys
 
 from bench import grade as G
 from bench import tasks as T
+from bench.solve import solve as S
 
 
 def oracle_answer(t: dict) -> str:
@@ -66,6 +67,19 @@ def main() -> int:
     if json.dumps(tasks, ensure_ascii=False, sort_keys=True) != json.dumps(again, ensure_ascii=False, sort_keys=True):
         fails += 1
         print("NONDETERMINISTIC: 同一シードで生成結果が変わった")
+
+    # 決定論ソルバが正解条件から正解値を再現すること（oracle）
+    for t in tasks:
+        if "slots" not in t:
+            fails += 1
+            print(f"NO-SLOTS {t['id']} {t['kind']}")
+            continue
+        val = S(t["kind"], t["slots"])
+        want = float(t["answer"])
+        tol = float(t.get("tol", 1.0))
+        if abs(float(val) - want) > tol:
+            fails += 1
+            print(f"SOLVER-FAIL {t['id']} {t['kind']}: want={want} got={val}")
 
     by_ind: dict[str, int] = {}
     for t in tasks:

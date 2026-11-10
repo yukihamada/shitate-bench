@@ -28,6 +28,8 @@ from bench.run import (  # noqa: E402
     TASKS, load_articles, Retriever, build_context, SYSTEM, SYSTEM_RAG,
 )
 from bench.grade import grade  # noqa: E402
+from bench.run_tool import EXTRACT_SYS, extract_prompt, parse_json  # noqa: E402
+from bench.solve import solve  # noqa: E402
 
 
 def main() -> int:
@@ -41,6 +43,8 @@ def main() -> int:
     ap.add_argument("--tag", default="shitate")
     ap.add_argument("--tasks", default=TASKS)
     ap.add_argument("--max-tokens", type=int, default=1500)
+    ap.add_argument("--tool", action="store_true",
+                    help="モデルは条件抽出のみ。計算は決定論ソルバが確定する")
     a = ap.parse_args()
 
     from mlx_lm import load, generate
@@ -71,10 +75,14 @@ def main() -> int:
         for i, t in enumerate(tasks, 1):
             system = SYSTEM_RAG if a.rag else SYSTEM
             user = t["prompt"]
+            ctx = ""
             if a.rag:
                 arts = [x for x in all_articles if x.get("industry") == t["industry"]]
                 ctx = build_context(t, retrievers[t["industry"]], arts)
                 user = f"# 参考条文\n{ctx}\n\n# 質問\n{t['prompt']}"
+            if a.tool:
+                system = EXTRACT_SYS
+                user = extract_prompt(t["kind"], t["prompt"], ctx)
             msgs = [{"role": "system", "content": system},
                     {"role": "user", "content": user}]
             prompt = tok.apply_chat_template(msgs, add_generation_prompt=True,
@@ -83,7 +91,21 @@ def main() -> int:
             text = generate(model, tok, prompt=prompt, max_tokens=a.max_tokens,
                             verbose=False)
             dt = time.time() - st
-            ok, why = grade(t, text)
+            if a.tool:
+                slots = parse_json(text)
+                if not slots:
+                    ok, why = False, "no-json"
+                else:
+                    try:
+                        val = solve(t["kind"], slots)
+                        want = float(t["answer"])
+                        tol = float(t.get("tol", 1.0))
+                        ok = abs(float(val) - want) <= tol
+                        why = f"want={want} got={val}"
+                    except Exception as e:
+                        ok, why = False, f"solve:{e}"
+            else:
+                ok, why = grade(t, text)
             rec = {"id": t["id"], "kind": t["kind"], "industry": t["industry"],
                    "correct": ok, "why": why, "answer": t["answer"],
                    "pred": text[:600], "latency_s": round(dt, 3)}

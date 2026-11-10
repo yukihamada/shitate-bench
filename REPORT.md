@@ -54,3 +54,33 @@ Qwen3-8B-4bit を生徒に、gemini-3.5-flash（本ベンチ100%）を教師と�
 
 仕立ての経緯（90問）: 素モデル(RAG) 56.7% → テンプレ蒸留 31.1% → 計算特化 43.3% → 教師検証済み蒸留 **53.3%**。
 テンプレ答えだけでは推論を学べず悪化し、教師の解法を検証して学ばせると回復した。
+
+## ツール併用（モデルは条件抽出、計算は決定論ソルバ）
+
+モデルに「条文選択とケース条件の抽出」だけをJSONで出力させ、金額は `bench/solve.py` の
+決定論ソルバが確定する。算術ミスを構造的に排除する構成。ソルバは全90問で正解を再現
+（`python3 -m bench.selftest 10` の oracle 検証、fails=0）。
+
+### APIモデル: RAG単体 → ツール併用（RAGあり）
+
+| モデル | RAG単体 | ツール併用 | 差 |
+|---|---|---|---|
+| google/gemini-3.5-flash | 100.0% | 100.0% | +0.0pt |
+| claude-haiku-5-5 | 98.9% | **100.0%** | +1.1pt |
+| gpt-4.1-mini | 92.2% | **100.0%** | +7.8pt |
+| deepseek-chat | 76.7% | **100.0%** | +23.3pt |
+| gpt-4.1-nano | 68.9% | **100.0%** | +31.1pt |
+
+### ローカル Qwen3-8B-4bit（LoRA仕立て）: RAG単体 → ツール併用
+
+| 構成 | RAG単体 | ツール併用 |
+|---|---|---|
+| Qwen3-8B-4bit + LoRA | 52.2% | **100.0%** |
+
+8Bローカルモデルでも、条件抽出さえ正しければ計算はソルバが保証し100%に到達する。
+
+再現:
+```
+python3 bench/run_tool.py --models "google/gemini-3.5-flash,claude-haiku-5-5,gpt-4.1-mini,deepseek-chat,gpt-4.1-nano" --all --rag --tag tool-rag
+python3.12 bench/run_local.py --model mlx-community/Qwen3-8B-4bit --adapter data/distill/adapter --tool --rag --tag tool-local-rag
+```
